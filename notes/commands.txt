@@ -1,3 +1,5 @@
 1. django-admin startproject project_name
 2. python manage.py runserver
-
+3. pip freeze
+4. pip freeze >requirements.txt
+5. pip freeze -r requirements.txt
