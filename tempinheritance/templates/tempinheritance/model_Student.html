@@ -1,0 +1,30 @@
+{% extends "tempinheritance/base.html" %}
+
+{%block content%}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for data in student%}
+
+      <tr>
+        <th scope="row">{{data.id}}</th>
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.age}}</td>
+      </tr>
+    </tbody>
+      {% endfor %}
+  </table>
+
+  {%endblock%}
+
+
+
