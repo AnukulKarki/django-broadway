@@ -1,0 +1,57 @@
+1. ORM Stands for object Relational Mapping
+2. It is a way to query a database without using an actual database query.
+3. We use python object to query the database.
+
+
+ORM Examples
+Let's Take "Student" as a DB table
+
+students = Student.objects.all() #ORM
+print(students) # return all students
+
+Student.objects.create(name="name", email="email", age = 12)
+
+
+s= student[0]
+s.name= "Changed"
+s.save()
+
+It will update
+
+
+Read ORM
+---------------------------------------------------------------------
+
+Student.objects.all() ==> Returns all the value from the table in query set
+Student.objects.filter() ==> filter gives value in query set which contains objects according to the conditions.
+                            If value does not exist it will return empty query set
+                            For multiple value it returns multiple objects in a query set.
+
+Student.objects.get() ==> it only returns value in objects according to the conditions. (can return only one value else return error to other case)
+                            Returns DoesNotExistError if not found
+                            Returns multipleObjectsReturned if found multiple value.
+                            Doesnot have anyother methods for update but you can delete using delete method
+
+CREATE ORM
+-----------------------------------------------------------------------
+Student.objects.create(Column_name="value") --> Create a row in a database table
+
+
+Update ORM
+-----------------------------------------------------------------------
+Student.objects.filter(conditions).update(Column_name=value)
+
+DELETE ORM
+-------------------------------------------------------------------------
+Student.objects.filter(id=100).delete()
+Student.objects.get(id=100).delete()
+
+
+
+
+For Relational in case of foreign key {
+    if models variable is given then provide objects
+    if variable from table is given then you can provide primary id of parent table
+
+
+}

@@ -1,0 +1,2 @@
+Query set contains Objects.
+Each objects contains a row from table

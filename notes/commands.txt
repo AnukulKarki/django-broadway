@@ -4,3 +4,8 @@
 4. pip freeze >requirements.txt
 5. pip freeze -r requirements.txt
 6. python manage.py startapp <app name>
+7. python manage.py makemigration
+8. python manage.py shell (Open Django shell)
+9. python manage.py createsuperuser
+10. pip install django_extensions. -->it helps inherit every model in shell
+11 python manage.py shell_plus

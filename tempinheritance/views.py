@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
-from .models import Student
+from .models import Student, StudentProfile
 
 # Create your views here.
 
@@ -14,6 +14,14 @@ def student(request: HttpRequest):
     return render(request, template_name='tempinheritance/student.html', context={'student':student})
 
 def model_Student(request:HttpRequest):
-    student = Student.objects.all()
+    student = Student.objects.all()  #QuerySet 
     return render(request, template_name="tempinheritance/model_Student.html", context={"student":student})
+
+def profileDetials(request:HttpRequest):
+    StudentProfile = StudentProfile.objects.all()
+    studentData = Student.objects.all()
+
+
+    
+    return render(request, template_name="tempinheritance/profileDetail.html", context={"data":StudentProfile})
 

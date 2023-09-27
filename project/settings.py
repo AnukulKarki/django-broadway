@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
-    'tempinheritance',
-]
+    
+] 
+
+PROJECT_APPS = ['myapp','tempinheritance',]
+THIRD_PARTY_APPS = ['django_extensions']
+
+INSTALLED_APPS += PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
