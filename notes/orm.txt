@@ -41,6 +41,9 @@ Update ORM
 -----------------------------------------------------------------------
 Student.objects.filter(conditions).update(Column_name=value)
 
+Update For foreign key 
+Student.objects.filter(id=6).update(Classroom = Classroom.objects.get(id=2)) using object
+
 DELETE ORM
 -------------------------------------------------------------------------
 Student.objects.filter(id=100).delete()
@@ -51,7 +54,15 @@ Student.objects.get(id=100).delete()
 
 For Relational in case of foreign key {
     if models variable is given then provide objects
+    Student.objects.create(name="name", email="email", age = 12, foreignkey = value)
+    Examples :
+        Student.objects.filter(id=6).update(Classroom_id = "one") using object
+
+
+
+
     if variable from table is given then you can provide primary id of parent table
-
-
+    Examples:
+        Student.objects.filter(id=6).update(Classroom = Classroom.objects.get(id=2)) using object
+    Student.objects.create(name="name", email="email", age = 12, foreignkey = Student.objects.filter(id=1))
 }

@@ -18,10 +18,6 @@ def model_Student(request:HttpRequest):
     return render(request, template_name="tempinheritance/model_Student.html", context={"student":student})
 
 def profileDetials(request:HttpRequest):
-    StudentProfile = StudentProfile.objects.all()
-    studentData = Student.objects.all()
-
-
-    
-    return render(request, template_name="tempinheritance/profileDetail.html", context={"data":StudentProfile})
+    studentProfile = StudentProfile.objects.all()    
+    return render(request, template_name="tempinheritance/profileDetail.html", context={"data":studentProfile})
 

@@ -1,5 +1,0 @@
-From child to parent
-childobject.foreignkey.element of parent table
-
-From parent to child
-Parentobject.relatedname(class name of model in small letter).element of child table
