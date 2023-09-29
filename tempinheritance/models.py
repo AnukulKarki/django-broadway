@@ -26,3 +26,5 @@ class StudentProfile(models.Model):
     rollNo = models.IntegerField()
 
     
+
+    

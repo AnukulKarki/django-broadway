@@ -51,18 +51,69 @@ Student.objects.get(id=100).delete()
 
 
 
-
+Entering value in Foreign Key
 For Relational in case of foreign key {
-    if models variable is given then provide objects
+    if variable from table is given then you can provide primary id of parent table
     Student.objects.create(name="name", email="email", age = 12, foreignkey = value)
     Examples :
-        Student.objects.filter(id=6).update(Classroom_id = "one") using object
+        Student.objects.filter(id=6).update(Classroom_id = 1) using object
 
 
 
-
-    if variable from table is given then you can provide primary id of parent table
+    if models variable is given then provide objects
+    
     Examples:
         Student.objects.filter(id=6).update(Classroom = Classroom.objects.get(id=2)) using object
     Student.objects.create(name="name", email="email", age = 12, foreignkey = Student.objects.filter(id=1))
 }
+
+
+Accessibg Value from child table to parent table
+
+Dataobect.parentclassname.Column_name
+Dataobect.related_name.Column_name
+
+Examples:
+    c = Classroom.objects.get(id=1)
+    c.classroom_students.all()  # all is used because of multiple value
+                                    Can use other ORMs Like filter(), update()
+
+    Student.objects.filter(Classroom_id=1)
+
+
+Advance ORM
+------------------------------------------------------------------------------------------------------------------
+Student.objects.all()[1:2] #slicing
+
+Student.objects.filter(age__gt= 30) # age greater than 30
+Student.objects.filter(age__lt= 30) # age less than 30
+Student.objects.filter(age__lte= 30) # less than or equals
+Student.objects.filter(age__gte= 30) #greater than or equal
+Student.objects.filter(age__range= (10,30)) # age from 10 to 30
+Student.objects.filter(age__in= [1,2,3]) #checks multiple value
+Student.objects.filter(name__contains= "n") # check if name contains n in it. LIKE operator
+Student.objects.filter(name__icontains= "n") # it does care about the letter case. In newer version it does not needs icontains
+Student.objects.filter(name__endswith= "n") # check if data ends with n
+Student.objects.filter(name__iendswith= "n") #case insensitive
+Student.objects.filter(name__startswith= "n") #check if the letter starts with 
+Student.objects.filter(name="Anukul" , age = 13) # ',' means and operator
+import django.db.models import Q
+Student.objects.filter(Q(name="Anukul")|Q(age="21")) # OR Operator uses Q and have to import in views
+Student.objects.exclude(id=1) # works as NOT Operator
+Student.objects.filter(Classroom__isnull=True) #checks if classroom table have null values
+Student.objects.filter(Classroom__isnull=False) #checks if classroom column is not null
+Student.objects.all().count() # count the number of data  can also be used with filter
+Student.objects.filter().count()
+Student.objects.all().order_by("id") #order in ascending order
+Student.objects.all().order_by("-id") # decending order
+Student.objects.all().order_by("name","age") # gives priority for name and then age
+Student.objects.filter(classroom__name="one") #__name uses the data from classroom table
+StudentProfile.objects.filter(student__age=21) #it gives access to the column of age from Student Profile table
+
+From parent table to child table
+
+Student.objects.filter(studentprofile__address = "Kadaghari") # use related name
+Classroom.objects.filter(classroom_students__name = "Bhupendra") #can access the data of child table from parent table
+Student.objects.filter(studentprofile__address__isnull = False) #checks if the student do not have profile
+Classroom.objects.filter(classroom_students__age=30).distinct() #disticnt helps get the unique data
+
