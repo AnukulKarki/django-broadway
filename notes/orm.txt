@@ -117,3 +117,18 @@ Classroom.objects.filter(classroom_students__name = "Bhupendra") #can access the
 Student.objects.filter(studentprofile__address__isnull = False) #checks if the student do not have profile
 Classroom.objects.filter(classroom_students__age=30).distinct() #disticnt helps get the unique data
 
+
+
+Many To Many ORM
+--------------------------------------
+Article and Publications are two table
+Publication Forieng key is in article table
+so to upload data from publication table refrence key should be used
+
+These ORM is used to add the element in bridge table
+
+
+table1Object.foreignkeyofThat Table.add(object of another table)
+Article.objects.get(id=1).Publication.add(Publication.objects.get(id=1))
+
+Publication.objects.get(id=1).article_set.add(Article.objects.get(id=1))  #Using Related Name
