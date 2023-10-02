@@ -132,3 +132,23 @@ table1Object.foreignkeyofThat Table.add(object of another table)
 Article.objects.get(id=1).Publication.add(Publication.objects.get(id=1))
 
 Publication.objects.get(id=1).article_set.add(Article.objects.get(id=1))  #Using Related Name
+
+Article.objects.get(id=2).Publication.all()  # Checks every publication of Article 1
+Publication.objects.get(id=1).article_set.all() #checks which article are published from article 1
+
+
+Article.objects.filter(Publication=1)  #checks which article are published from publication 1
+Publication.objects.filter(article=1) #chceks which publication has published article 1 look up doesnot use _set.
+
+
+
+Article.objects.get(id=2).Publication.remove(Publication.objects.get(id=1)) #Remove element
+Publication.objects.get(id=1).article_set.remove(Article.objects.get(id=2))
+
+
+##Accessing the bridge table
+
+Ap = Article.Publication.through
+Ap.objects.all()
+Ap.objects.get(id=1)
+
