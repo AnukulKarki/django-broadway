@@ -1,0 +1,29 @@
+{%extends "tempinheritance/base.html"%}
+
+{%block content%}
+<h1>Add Student</h1>
+<br>
+
+
+<form class="row g-3" method="post" action="{% url 'studentForm'%} ">
+    {%csrf_token%}
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label" >Name</label>
+      <input type="text" class="form-control" name = "name" >
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label" >Email</label>
+      <input type="email" class="form-control" name = "email">
+    </div>
+    <div class="col-6">
+      <label for="inputAddress" class="form-label" >Age</label>
+      <input type="number" class="form-control" name = "age">
+    </div>
+    
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+
+{%endblock%}

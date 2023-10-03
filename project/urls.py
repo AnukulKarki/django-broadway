@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls') ),
     path('student/', include('tempinheritance.urls')),
-    path('sr/', include('staticRender.urls'))
+    path('sr/', include('staticRender.urls')),
+    path('form/',include('templateForms.urls'))
 ]
