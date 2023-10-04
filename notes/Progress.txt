@@ -4,5 +4,6 @@ Day 6- Model Relation One to many
 Day 7- Advance ORM, Static Rendering
 Day 8- PostgresDB Connect/ Many To Many Database
 Day 9- Template Form
+Day 10- Create A curd
 
 
