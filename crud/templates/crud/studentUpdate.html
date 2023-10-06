@@ -1,0 +1,59 @@
+{% extends "crud/base.html" %} {%load static %} {% block content %}
+
+
+<h1>{{title}}</h1>
+<br>
+
+
+  <form
+    method="post"
+    action="{%url 'studentUpdate' student.id%}"
+    enctype="multipart/form-data"
+  >
+  <div class="row" >
+    {% csrf_token%}
+
+    <div class="col-md-4">
+      {% if student.studentprofile.picture%}
+      <img src="{{student.studentprofile.picture.url}}" style="height: 200px" />
+
+      {%else%}
+      <img src="{%static 'crud/default.png'%}" style="height: 200px" />
+      {%endif%} <br>
+
+      <input type="file" name="pp" class="form-control" >
+
+
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" value="{{student.name}}">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" value="{{student.email}}" >
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Age</label>
+            <input type="number" name="age" class="form-control" value="{{student.age}}">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress2" class="form-label">Address</label>
+            <input type="text" class="form-control" name="address" value="{{student.studentprofile.address}}">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Contact</label>
+            <input type="text" class="form-control" name="contact" value="{{student.studentprofile.contact}}">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Update</button>
+          <a href="{%url 'studentDetail' student.id %}" class="btn btn-danger">Cancel</a>
+          
+
+    </div>
+</div>
+  </form>
+
+
+{% endblock%}
