@@ -46,6 +46,26 @@
             <label for="inputCity" class="form-label">Contact</label>
             <input type="text" class="form-control" name="contact" value="{{student.studentprofile.contact}}">
           </div>
+
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Classroom</label>
+            <select id="inputState" class="form-select" name="classroomId">
+            {%for class in class%}
+
+            {%if class.id == student.classroom.id%}
+
+            <option value = {{class.id}} selected>{{class.name}}</option>
+
+            {%else%}
+
+              <option value = {{class.id}}>{{class.name}}</option>
+              {%endif%}
+            {%endfor%}
+            </select>
+          </div>
+
+
+
           <br>
           <button type="submit" class="btn btn-primary">Update</button>
           <a href="{%url 'studentDetail' student.id %}" class="btn btn-danger">Cancel</a>

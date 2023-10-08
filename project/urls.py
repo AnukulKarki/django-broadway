@@ -25,7 +25,8 @@ urlpatterns = [
     path('student/', include('tempinheritance.urls')),
     path('sr/', include('staticRender.urls')),
     path('form/',include('templateForms.urls')),
-    path('',include('crud.urls'))
+    path('',include('crud.urls')),
+    path('cb/',include('classBased.urls'))
 ]
 
 if settings.DEBUG:

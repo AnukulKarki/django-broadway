@@ -58,6 +58,7 @@ def studentDetail(request:HttpRequest, id):
 
 def studentUpdate(request:HttpRequest, id):
     StudentObject = Student.objects.get(id=id)
+    classes = Classroom.objects.all()
 
     if request.method == "POST":
         updatedName = request.POST.get('name')
@@ -75,6 +76,12 @@ def studentUpdate(request:HttpRequest, id):
             sp.picture = updatedPhoto
             sp.save()
         return redirect("studentDetail", StudentObject.id)
-    return render(request, "crud/studentUpdate.html", {"title":"Student Update", "student":StudentObject})
+    return render(request, "crud/studentUpdate.html", {"title":"Student Update", "student":StudentObject, "class":classes})
 
+def studentDelete(request:HttpRequest, id):
+    studentObject = Student.objects.get(id=id)
+    if request.method == "POST":
+        studentObject.delete()
+        return redirect("crudStudents")
+    return render(request, "crud/studentDelete.html",{"student":studentObject})
 

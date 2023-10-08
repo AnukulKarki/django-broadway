@@ -19,6 +19,7 @@
         <b>Age: </b> {{student.age}}<br><br>
         <b>Address: </b> {{student.studentprofile.address}}<br><br>
         <b>Contact: </b> {{student.studentprofile.contact}}<br><br>
+        <b>Classroom: </b> {{student.classroom.name}}<br><br>
 
         <div >
             <a class="btn btn-primary" href="{% url 'studentUpdate' student.id%}">Update</a>

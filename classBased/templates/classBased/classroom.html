@@ -1,0 +1,38 @@
+{% extends 'crud/base.html'%} {%block content%}
+<h1>{{title}}</h1>
+<a href="{%url 'crudStudents'%}" style="float: right" class="btn btn-primary">Student</a>
+<br /><br />
+
+<form method="post" action="{% url 'cb_model_classroom'%}">
+  {%csrf_token%}
+  {% comment %} <label>Name</label>
+  <input class="form-control" style="width: 30%" name="name" /> {% endcomment %}
+  {{form}}
+  <br>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<br /><br />
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">S.N.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  {%for classroom in classrooms%}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{classroom.name}}</td>
+      <td>
+        <a class="btn btn-warning" href="{%url 'classroomUpdate' classroom.id%}"">Update</a>
+        <a class="btn btn-danger" href="{%url 'classroomDelete' classroom.id%}">Delete</a>
+
+      </td>
+    </tr>
+  </tbody>
+  {%endfor%}
+</table>
+{%endblock%}

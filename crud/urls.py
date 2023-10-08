@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import crud, classroomDelete, classroomUpdate, student, addStudent,studentDetail, studentUpdate
+from .views import crud, classroomDelete, classroomUpdate, student, addStudent,studentDetail, studentUpdate, studentDelete
 
 urlpatterns = [
     path("",crud, name="crudClassroom"),
@@ -8,5 +8,6 @@ urlpatterns = [
     path("student/", student, name="crudStudents"),
     path("addStudent/",addStudent, name="addStudent"),
     path("student/detail/<int:id>/",studentDetail, name="studentDetail"),
-    path("student/update/<int:id>",studentUpdate, name="studentUpdate")
+    path("student/update/<int:id>",studentUpdate, name="studentUpdate"),
+    path("student/delete/<int:id>", studentDelete, name="studentDelete")
 ]

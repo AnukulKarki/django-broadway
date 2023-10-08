@@ -5,5 +5,7 @@ Day 7- Advance ORM, Static Rendering
 Day 8- PostgresDB Connect/ Many To Many Database
 Day 9- Template Form
 Day 10- Create A curd
+Day 11- Completing a curd
+Day 12- Django Forms
 
 
