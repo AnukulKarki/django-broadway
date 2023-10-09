@@ -1,0 +1,45 @@
+{% extends "crud/base.html" %}
+
+{% block content %}
+
+<h1>{{title}}</h1>
+
+<div style="float: right;">
+    <a class="btn btn-success" href="{% url 'addStudent'%}">Add Student</a>
+    <a class="btn btn-primary" href="{%url 'crudClassroom'%}">Classroom</a>
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.N.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Classroom</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    {%for student in students%}
+    <tbody>
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.classroom.name}}</td>
+        <td>
+          <a class="btn btn-warning" href="{%url 'studentDetail' student.id%}">Detail</a>
+          <a class="btn btn-danger" href="{%url 'studentDelete' student.id%}">Delete</a>
+  
+        </td>
+      </tr>
+    </tbody>
+    {%endfor%}
+  </table>
+
+{% endblock %}
+
+
+
