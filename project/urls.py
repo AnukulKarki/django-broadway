@@ -26,7 +26,8 @@ urlpatterns = [
     path('sr/', include('staticRender.urls')),
     path('form/',include('templateForms.urls')),
     path('',include('crud.urls')),
-    path('cb/',include('classBased.urls'))
+    path('cb/',include('classBased.urls')),
+    path('api/', include('api.urls'))
 ]
 
 if settings.DEBUG:

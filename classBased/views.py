@@ -5,7 +5,7 @@ from crud.models import *
 from .forms import ClassroomForm, ClassroomModelForm
 from django.http import HttpRequest
 from django.views import View
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
 
 # Create your views here.
 def classroom (request:HttpRequest):
@@ -77,3 +77,9 @@ class StudentListView(ListView):
     #     # print(context)
     #     # context["students"] = self.queryset
     #     return context
+
+class studentDetailView(DetailView):
+    queryset = Student.objects.all()
+    template_name = "classBased/studentDetail.html"
+    # slug_url_kwarg = "id" #what to use in url
+    # slug_field = "id" #what to check in db

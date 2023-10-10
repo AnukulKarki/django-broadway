@@ -7,5 +7,7 @@ Day 9- Template Form
 Day 10- Create A curd
 Day 11- Completing a curd
 Day 12- Django Forms
+Day 13- Template Forms
+Day 14- API
 
 

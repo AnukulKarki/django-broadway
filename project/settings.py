@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     
 ] 
 
-PROJECT_APPS = ['myapp','tempinheritance','staticRender','templateForms', 'crud', 'classBased']
-THIRD_PARTY_APPS = ['django_extensions']
+PROJECT_APPS = ['myapp','tempinheritance','staticRender','templateForms', 'crud', 'classBased', 'api']
+THIRD_PARTY_APPS = ['django_extensions',"rest_framework"]
 
 INSTALLED_APPS += PROJECT_APPS + THIRD_PARTY_APPS
 

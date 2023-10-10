@@ -1,0 +1,23 @@
+1. API stands for Application Programmable Interface
+2. It is a service provided by an application to program another application.
+3. It is an medium to share data among two or more entities.
+4. We can use APIs to communicate between FE and BE, BE and BE, mobile app and BE etc.
+5. Google Maps, Login with Google, Facebook and Sparrow SMS etc. are the examples of
+APIs.
+6. Here, we will create our own APIs.
+
+
+7. There are two famous types of APIs; REST APIs and SOAP APIs.
+    => In REST APIs, communication is done through the JSON data.
+    => REST stands for Representational State Transfer
+    => In SOAP APIs, communication is done through XML data.
+
+    Example of JSON
+    student = {"name": "Jon", "age": 30, "address": "KTM"}
+
+    Example of XML
+    <student>
+        <name>Jon</name>
+        <age>30</age>
+        <address>KTM</address>
+    </student>
