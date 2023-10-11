@@ -1,0 +1,6 @@
+Start a psql shell  
+    => psql -U postgres 
+
+
+CREATE DATABASE sept3db
+
