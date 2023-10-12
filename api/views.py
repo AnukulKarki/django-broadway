@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from crud.models import Student, Classroom
+from crud.models import Student, Classroom, StudentProfile
 from rest_framework import status
 
-from .serializers import ClassroomSerializers, ClassroomModelSerializer, StudentModelSerializer
+from .serializers import ClassroomSerializers, ClassroomModelSerializer, StudentModelSerializer, StudentProfileModelSerializer
 
 
 
@@ -95,7 +95,7 @@ class ClassroomAPIView(APIView):
 class studentAPIView(APIView):
     def get(self, *args, **kwargs):
         student = Student.objects.all()
-        serializer = StudentModelSerializer(student, many = True)
+        serializer = StudentModelSerializer(student, many = True, context = {"request":self.request}) #Sending request to serailizer through context
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self,*args, **kwargs):
@@ -104,3 +104,15 @@ class studentAPIView(APIView):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         # return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+
+class StudentProfileAPIView(APIView):
+    def get(self, *args, **kwargs):
+        studentProfile = StudentProfile.objects.all()
+        serializer = StudentProfileModelSerializer(studentProfile, many = True, context = {"request":self.request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    def post(self,*args, **kwargs):
+        serializer = StudentProfileModelSerializer(data = self.request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
