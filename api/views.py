@@ -4,8 +4,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from crud.models import Student, Classroom, StudentProfile
 from rest_framework import status
-
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import ClassroomSerializers, ClassroomModelSerializer, StudentModelSerializer, StudentProfileModelSerializer
+from .viewsets import ListUpdateViewSet, ListCreateRetriveViewSet
+from .permissions import isSuperAdminUser
 
 
 
@@ -116,3 +120,55 @@ class StudentProfileAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+class ClassroomListAPIView(ListAPIView): #List API View  have get Method
+    queryset = Classroom.objects.all() # can only have Query Set[]
+    serializer_class = ClassroomModelSerializer #Does not need Open Close bracket.
+
+
+class ClassroomCreateAPIView(CreateAPIView):#Create API
+    serializer_class = ClassroomModelSerializer
+
+class ClassroomRetrieveAPIView(RetrieveAPIView): #POST not available
+    queryset = Classroom.objects.all() #check from only query set from the data that was sent
+    serializer_class = ClassroomModelSerializer
+
+class ClassroomUpdateAPIView(UpdateAPIView):
+    queryset = Classroom.objects.all() 
+    serializer_class = ClassroomModelSerializer
+
+class ClassroomDestroyAPIView(DestroyAPIView):
+    queryset = Classroom.objects.all() 
+    serializer_class = ClassroomModelSerializer
+
+class ClassroomListCreateAPIView(ListCreateAPIView): #Can create and display everything
+    queryset = Classroom.objects.all() 
+    serializer_class = ClassroomModelSerializer
+
+class ClassroomObjectAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Classroom.objects.all()
+    serializer_class = ClassroomModelSerializer
+
+
+
+class ClassroomViewSet(ModelViewSet):
+    # permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]
+    queryset = Classroom.objects.all()
+    serializer_class = ClassroomModelSerializer
+    #Gives permission only for GET and does not provide information to other methods.
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny(),]
+        return [isSuperAdminUser(),]
+
+    
+class ClassroomListUpdateViewSet(ListUpdateViewSet):
+    queryset = Classroom.objects.all()
+    serializer_class = ClassroomModelSerializer
+
+
+class ClassroomListCreateRetriveViewSet(ListCreateRetriveViewSet):
+    queryset = Classroom.objects.all()
+    serializer_class = ClassroomModelSerializer

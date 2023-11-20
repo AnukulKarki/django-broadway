@@ -21,8 +21,8 @@ class StudentModelSerializer(serializers.ModelSerializer):
         fields = super().get_fields()
         request = self.context.get("request")
 
-        if request and request.method == "GET":
-            fields['classroom'] = ClassroomModelSerializer()  #Convert the object of the class to JSON ##
+        if request and request.method == "GET": # Only for accessing the data not for entering the data
+            fields['classroom'] = ClassroomModelSerializer()  #Convert the object of the class to JSON ##  It is used to display the name and ID
         return fields
 
 class StudentProfileModelSerializer(serializers.ModelSerializer):
