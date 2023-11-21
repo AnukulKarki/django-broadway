@@ -1,11 +1,12 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter 
-from .views import hello_world, MessageView, SimpleStudentView, SimpleStudentListView, ClassroomDetailAPIView, ClassroomAPIView, studentAPIView, StudentProfileAPIView, ClassroomListAPIView, ClassroomCreateAPIView, ClassroomRetrieveAPIView, ClassroomUpdateAPIView, ClassroomDestroyAPIView, ClassroomListCreateAPIView, ClassroomObjectAPIView , ClassroomViewSet, ClassroomListUpdateViewSet, ClassroomListCreateRetriveViewSet
+from .views import hello_world,StudentViewSet , MessageView, SimpleStudentView, SimpleStudentListView, ClassroomDetailAPIView, ClassroomAPIView, studentAPIView, StudentProfileAPIView, ClassroomListAPIView, ClassroomCreateAPIView, ClassroomRetrieveAPIView, ClassroomUpdateAPIView, ClassroomDestroyAPIView, ClassroomListCreateAPIView, ClassroomObjectAPIView , ClassroomViewSet, ClassroomListUpdateViewSet, ClassroomListCreateRetriveViewSet
 from rest_framework.authtoken.views import obtain_auth_token
 
 
 router = DefaultRouter()
 router.register("classroom-viewset", ClassroomViewSet)
+router.register("student-viewset", StudentViewSet)
 router.register("classroom-list-update",ClassroomListUpdateViewSet)
 router.register("classroom-list-create-retrive", ClassroomListCreateRetriveViewSet)
 
